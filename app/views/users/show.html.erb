@@ -14,7 +14,7 @@
       <h1 class="m-xs text-center">Vous suivez le plan A</h1>
 
       <h3 class="font-bold text-center ">
-        50 % de remboursement / 10 euros par mois par employé
+        50 % de remboursement
       </h3>
       <h3 class="text-center">
         <%= link_to "Voir mon plan", packages_path, class: "btn btn-primary text-uppercase" %></h3>
@@ -27,14 +27,14 @@
     <div class="p-m">
       <h1 class="m-xs text-center">
         <% if @employees_count != 1 %>
-          <%= @employees_count %> employés sont assurés
+          <%= @employees_count %> employés assurés
         <% else %>
-          <%= @employees_count %> employé est assuré
+          <%= @employees_count %> employé assuré
         <% end %>
 
       </h1>
       <h3 class="font-bold text-center ">
-        3 notifications importantes concernant vos employés
+        3 notifications importantes
       </h3>
       <h3 class="text-center">
         <%= link_to "Gestion des assurés", user_employees_path(@user), class: "btn btn-primary text-uppercase" %></h3>
@@ -45,7 +45,7 @@
 <div class="col-md-4">
   <div class="widget lazur-bg no-padding">
     <div class="p-m">
-      <h1 class="m-xs text-center">Cout mensuel : 420 € / mois</h1>
+      <h1 class="m-xs text-center">Coût : 420 € / mois</h1>
 
       <h3 class="font-bold text-center ">
         Prochain prélevement : 11/04/2016
@@ -118,19 +118,19 @@
 
       <%= render partial: "notifications/notification", locals:{ title: "Vos obligations légales, Mise à jour", description: "Les accords de branche etc...", date: "26/09/2015", active: "active", type: "fa-shield" } %>
 
-      <%= render partial: "notifications/notification", locals:{ title: "Flash, vous n'êtes plus obligés d'enregistrer vos employés....", description: "Nouvelles Flash sur la santé ou la legislation", date: "26/09/2015", active: "", type: "fa-bolt" } %>
+      <%= render partial: "notifications/notification", locals:{ title: "Vous n'êtes plus obligés d'enregistrer vos employés....", description: "Nouvelles Flash sur la santé ou la legislation", date: "26/09/2015", active: "", type: "fa-bolt" } %>
 
       <%= render partial: "notifications/notification", locals:{ title: "Evénement de ALAN Assurance", description: "Journée Alan réservez votre journée", date: "26/08/2015", active: "", type: "fa-calendar" } %>
 
-      <%= render partial: "notifications/notification", locals:{ title: "Attention vous allez être dans l'obligation d'assurer tous vos salariés", description: "La nouvelle loi prévoit.....", date: "26/08/2015", active: "", type: "fa-bomb" } %>
+      <%= render partial: "notifications/notification", locals:{ title: "Obligation d'assurer tous vos salariés", description: "La nouvelle loi prévoit.....", date: "26/08/2015", active: "", type: "fa-bomb" } %>
 
       <%= render partial: "notifications/notification", locals:{ title: "Vos obligations légales, Mise à jour", description: "Les accords de branche etc...", date: "26/09/2015", active: "", type: "fa-shield" } %>
 
-      <%= render partial: "notifications/notification", locals:{ title: "Flash, vous n'êtes plus obligés d'enregistrer vos employés....", description: "Nouvelles Flash sur la santé ou la legislation", date: "26/09/2015", active: "", type: "fa-bolt" } %>
+      <%= render partial: "notifications/notification", locals:{ title: "Vous n'êtes plus obligés d'enregistrer vos employés....", description: "Nouvelles Flash sur la santé ou la legislation", date: "26/09/2015", active: "", type: "fa-bolt" } %>
 
       <%= render partial: "notifications/notification", locals:{ title: "Evénement de ALAN Assurance", description: "Journée Alan réservez votre journée", date: "26/08/2015", active: "", type: "fa-calendar" } %>
 
-      <%= render partial: "notifications/notification", locals:{ title: "Attention vous allez être dans l'obligation d'assurer tous vos salariés", description: "La nouvelle loi prévoit.....", date: "26/08/2015", active: "", type: "fa-bomb" } %>
+      <%= render partial: "notifications/notification", locals:{ title: "Obligation d'assurer tous vos salariés", description: "La nouvelle loi prévoit.....", date: "26/08/2015", active: "", type: "fa-bomb" } %>
 
 
 
