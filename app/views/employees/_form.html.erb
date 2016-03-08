@@ -52,7 +52,7 @@ function update_email_field(){
   var last_name = $('#employee_last_name').val();
   var domain = "<%= @user.company_domain.to_s %>";
   var email = first_name + '.' + last_name + '@' + domain;
-  $('#employee_email').val(email);
+  $('#employee_email').val(email.latinize().replace(/ /g,"-"));
 
 
 }

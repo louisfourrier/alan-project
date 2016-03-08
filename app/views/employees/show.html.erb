@@ -12,40 +12,91 @@
 <% end %>
 
 <div class="row">
-<div class="col-md-4">
-  <div class="widget lazur-bg no-padding">
-    <div class="p-m">
-      <h1 class="m-xs text-center">Assuré par le Plan A</h1>
+<div class="wrapper wrapper-content animated fadeInRight">
+  <div class="col-md-4">
+    <div class="widget lazur-bg no-padding">
+      <div class="p-m">
+        <h1 class="m-xs text-center">Assuré par le Plan A</h1>
 
-      <h3 class="font-bold text-center ">
-        assuré depuis le :
-        <%= l @employee.subscription_date %>
-      </h3>
+        <h3 class="font-bold text-center ">
+          assuré depuis le :
+          <%= l @employee.subscription_date %>
+        </h3>
 
-    </div>
-
-  </div>
-</div>
-<div class="col-md-4">
-  <div class="widget lazur-bg no-padding">
-    <div class="p-m">
-      <h1 class="m-xs text-center">Coût employé : 10 € / mois</h1>
-      <h3 class="font-bold text-center ">
-        La part du cout de l'assurance supporté par l'employé
-      </h3>
+      </div>
 
     </div>
+  </div>
+  <div class="col-md-4">
+    <div class="widget lazur-bg no-padding">
+      <div class="p-m">
+        <h1 class="m-xs text-center">Coût employé : 10 € / mois</h1>
+        <h3 class="font-bold text-center ">
+          La part du cout de l'assurance supporté par l'employé
+        </h3>
 
+      </div>
+
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="widget lazur-bg no-padding">
+      <div class="p-m">
+        <h1 class="m-xs text-center">Coût employeur : 15 € / mois</h1>
+
+        <h3 class="font-bold text-center ">
+          Votre part du cout mensuel
+        </h3>
+
+      </div>
+
+    </div>
   </div>
 </div>
-<div class="col-md-4">
-  <div class="widget lazur-bg no-padding">
-    <div class="p-m">
-      <h1 class="m-xs text-center">Coût employeur : 15 € / mois</h1>
+</div>
 
-      <h3 class="font-bold text-center ">
-        Votre part du cout mensuel
-      </h3>
+<div class="row">
+<div class="wrapper wrapper-content animated fadeInRight">
+  <div class="col-md-12">
+    <div class="ibox-content m-b-sm border-bottom">
+
+      <% if @employee.complete_information %>
+
+      <div class="pull-right">
+
+        <%= link_to "Modifier les informations", edit_user_employee_path(@user, @employee),class: "btn btn-primary" %>
+      </div>
+
+      <div class="p-xs">
+        <div class="pull-left m-r-md">
+          <i class="fa fa-check text-primary mid-icon"></i>
+        </div>
+        <h2>
+          Statut : Dossier complet
+
+        </h2>
+        <span>L'assuré est désormais assuré.</span>
+      </div>
+
+      <% else %>
+
+      <div class="pull-right">
+        <%= link_to "Envoyer un nouvel email", "#",class: "btn btn-primary" %>
+        <%= link_to "Modifier les informations", edit_user_employee_path(@user, @employee),class: "btn btn-primary" %>
+      </div>
+
+      <div class="p-xs">
+        <div class="pull-left m-r-md">
+          <i class="fa fa-times text-danger mid-icon"></i>
+        </div>
+        <h2>
+          Statut : Dossier incomplet
+
+        </h2>
+        <span>L'assuré n'a pas encore rempli le dossier afin de valider son compte et être assuré.</span>
+      </div>
+
+      <% end %>
 
     </div>
 
@@ -54,21 +105,27 @@
 </div>
 
 <div class="row">
+<div class="wrapper wrapper-content animated fadeInRight">
+  <div class="col-md-12">
 
-<div class="col-md-12">
-  <div class="wrapper wrapper-content animated fadeInRight">
     <div class="ibox">
       <div class="ibox-content">
         <div class="row">
           <div class="col-lg-12">
             <h2 class="page-header">Informations générales</h2>
+
             <div>
-              <h3>Dossier complété :
-                <%= @employee.complete_information %></h3>
+              <h3>Prénom :
+                <%= @employee.first_name %></h3>
             </div>
             <div>
-              <h3>Assuré :
-                <%= @employee.complete_information %></h3>
+              <h3>Nom :
+                <%= @employee.last_name %></h3>
+            </div>
+
+            <div>
+              <h3>Email Entreprise :
+                <%= @employee.email || @employee.guess_email %></h3>
             </div>
             <div>
               <h3>Date de souscription :
@@ -78,10 +135,7 @@
               <h3>Assuré depuis le :
                 <%= l @employee.subscription_date %></h3>
             </div>
-            <div>
-              <h3>Email Entreprise :
-                <%= @employee.email || @employee.guess_email %></h3>
-            </div>
+
           </div>
         </div>
 
@@ -89,7 +143,9 @@
           <div class="col-lg-12">
 
             <h2 class="page-header">
-              Options choisies <small>(peut être à ne pas afficher pour l'employeur mais ca peut etre assurance conjoint par exemple, prévoyance etc..)</small></h2>
+              Options choisies
+              <small>(peut être à ne pas afficher pour l'employeur mais ca peut etre assurance conjoint par exemple, prévoyance etc..)</small>
+            </h2>
             <div class="panel blank-panel">
 
               <div class="tab-pane" id="tab-2">
@@ -284,43 +340,44 @@
 
         </div>
 
-
         <div class="row m-t-sm">
           <div class="col-lg-12">
 
-            <h2 class=""> Notifications du compte <small>(valeur d'exemple, système de notification non codé)</small></h2>
+            <h2 class="">
+              Notifications du compte
+              <small>(valeur d'exemple, système de notification non codé)</small>
+            </h2>
 
             <div class="ibox-content ">
 
               <%= render partial: "notifications/notification", locals:{ title: "Dossier Rempli", description: "Les accords de branche etc...", date: "26/02/2016 15h37", active: "active", type: "fa-user" } %>
 
-              <%= render partial: "notifications/notification", locals:{ title: "Employé inscrit, dossier à completer envoyé", description: "Un dossier a été envoyé afin que votre employé remplisse les derniers éléments nécessaires à l'assurance", date: "23/02/2016 16h00", active: "", type: "fa-user" } %>
-
-
-            </div>
+              <%= render partial: "notifications/notification", locals:{ title: "Employé inscrit, dossier à completer envoyé", description: "Un dossier a été envoyé afin que votre employé remplisse les derniers éléments nécessaires à l'assurance", date:
+              "23/02/2016 16h00", active: "", type: "fa-user" } %>
 
             </div>
+
           </div>
+        </div>
 
-          <div class="row m-t-sm">
-            <div class="col-lg-12">
+        <div class="row m-t-sm">
+          <div class="col-lg-12">
 
-              <h2 class="page-header"> Suppression du compte</h2>
+            <h2 class="page-header">
+              Suppression du compte</h2>
 
-              <div class="alert alert-info" >
-                Si vous souhaitez supprimer un employé de la liste de vos assurés, vous pouvez le faire depuis votre esapge de gestion Alan. N'oubliez pas vos obligations légales à ce sujet. Consultez <a href="#">notre article</a> pour en savoir plus.
-              </div>
-
-              <div class=" padding-5">
-                  <%= link_to "Supprimer cet employé des assurés", user_employee_path(@user, @employee), method: :delete, data: { confirm: 'Etes vous sur ?' }, class: "btn btn-danger" %>
-              </div>
-
-
-
-              </div>
+            <div class="alert alert-info">
+              Si vous souhaitez supprimer un employé de la liste de vos assurés, vous pouvez le faire depuis votre esapge de gestion Alan. N'oubliez pas vos obligations légales à ce sujet. Consultez
+              <a href="#">notre article</a>
+              pour en savoir plus.
             </div>
 
+            <div class=" padding-5">
+              <%= link_to "Supprimer cet employé des assurés", user_employee_path(@user, @employee), method: :delete, data: { confirm: 'Etes vous sur ?' }, class: "btn btn-danger" %>
+            </div>
 
+          </div>
+        </div>
 
       </div>
     </div>

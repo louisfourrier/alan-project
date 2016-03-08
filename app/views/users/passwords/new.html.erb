@@ -1,16 +1,42 @@
-<h2>Forgot your password?</h2>
+<%= provide(:title, "Mot de passe oublié") %>
+<%= provide(:description, "Inscrivez vous à l'assurance Alan en deux clics") %>
+
+<% provide(:no_search_bar, true)%>
+<%= provide(:no_margin, true) %>
+<% provide(:notice_container, true) %>
+
+<section class="back-image-landing back-image-assurance full-height vertical-center">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3 col-sm-offset-3 grey-background padding-20 background-opacity ">
+
+        <% flash.each do |key, value| %>
+        <div class="alert alert-warning alert-<%= key %>  text-center">
+          <strong><%= value %></strong>
+        </div>
+        <% end %>
+
+        <h2 class="text-center text-dark-blue text-uppercase">Mot de passe oublié</h2>
+
+        <hr class="landing-hr hr-dark-blue"/>
+
 
 <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
   <%= devise_error_messages! %>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
+    <%= f.email_field :email, autofocus: true, class: "form-control" %>
   </div>
 
   <div class="actions">
-    <%= f.submit "Send me reset password instructions" %>
+    <%= f.submit "Envoyer un email pour nouveau mot de passe", class: "btn btn-primary" %>
   </div>
 <% end %>
 
 <%= render "users/shared/links" %>
+
+</div>
+</div>
+</div>
+</section>

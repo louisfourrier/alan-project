@@ -16,8 +16,7 @@
                         <li>
                             <%= link_to "Accueil", root_path, class: "" %>
                         </li>
-                        <li><%= link_to "Notre offre", "#", class: "" %></li>
-                        <li><%= link_to "Contact", "#", class: "" %></li>
+                      
                         <% if current_user %>
                         <li><%= link_to "Espace de Gestion", current_user, class: "" %></li>
                         <% else %>

@@ -45,6 +45,12 @@ class User < ActiveRecord::Base
 
   ##-- Methods----------------
 
+
+  # Beautify URLS
+  def to_param
+  "#{id} #{full_name}".parameterize
+  end
+
   # Basic methods with name
   def full_name
     first_name.to_s + ' ' + last_name.to_s

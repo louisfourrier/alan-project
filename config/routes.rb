@@ -5,6 +5,8 @@ Rails.application.routes.draw do
 
 
 
+  get 'search/result'
+
   devise_for :users
 
   # Page accessible for connected Users
@@ -12,7 +14,12 @@ Rails.application.routes.draw do
     # Depend on USer. Nested Resources
     resources :invoices
     resources :packagings
-    resources :employees
+    resources :employees do
+      member do
+        get 'complete_profile'
+      end
+
+    end
 
   end
 

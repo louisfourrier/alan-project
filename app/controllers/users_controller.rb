@@ -35,6 +35,7 @@ class UsersController < ApplicationController
 
   # GET /users/1
   def show
+    @employees_count = @user.employees.count
   end
 
   # GET /users/new

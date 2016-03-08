@@ -1,6 +1,59 @@
-<h1>Editing Employee</h1>
+<%= provide(:main_title, "Modification du dossier employé" ) %>
+<%= content_for(:breadcrumb) do %>
+<li>
+    <%= link_to "Accueil", current_user %>
+</li>
+<li>
+  <%= link_to "Employés assurés", user_employees_path(current_user) %>
+</li>
 
-<%= render 'form' %>
+<li>
+  <%= link_to "Employés assurés", user_employee_path(current_user, @employee) %>
+</li>
+<li class="active">
+    <strong>Modifier informations générales</strong>
+</li>
+<% end %>
 
-<%= link_to 'Show', @employee %> |
-<%= link_to 'Back', employees_path %>
+
+
+<div class="row">
+
+    <div class="col-md-12">
+<div class="wrapper wrapper-content animated fadeInRight">
+      <div class="ibox-content m-b-sm border-bottom">
+
+
+          <div class="p-xs">
+              <div class="pull-left m-r-md">
+                  <i class="fa fa-users text-navy mid-icon"></i>
+              </div>
+              <h2>Modification des données de l'assuré</h2>
+              <span>Modifier les informations sur votre employé.</span>
+          </div>
+
+
+      </div>
+
+
+
+
+      </div>
+    </div>
+  </div>
+
+
+  <div class="row">
+
+      <div class="col-md-6 col-md-offset-3">
+
+          <div class="ibox-content ">
+            <h2 class="m-lg text-center">Un email sera envoyé à votre employé pour compléter son profil.</h2>
+
+
+          <%= render "form" %>
+
+        </div>
+
+      </div>
+    </div>

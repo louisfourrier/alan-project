@@ -30,8 +30,16 @@ align-items: center;
   color: $alan-grey;
 }
 
+.text-danger{
+  color: $alan-red !important;
+}
+
 .text-white{
   color: white;
+}
+
+.text-12{
+  font-size: 1.2em;
 }
 
 
@@ -43,6 +51,10 @@ align-items: center;
 
 .margin-top-10{
   margin-top: 10px;
+}
+
+.margin-bottom-10{
+  margin-bottom: 10px;
 }
 
 // Padding
@@ -103,4 +115,42 @@ align-items: center;
 
 .grey-background {
  background-color: $alan-light-grey;
+}
+
+
+// ERRORS STYLING
+
+.field_with_errors {
+
+  label{
+    color: $alan-red;
+  }
+
+    input{
+      border-color: $alan-red;
+    }
+
+}
+
+#error_explanation {
+  border: 1px solid $alan-red;
+  padding: 7px;
+  padding-bottom: 0;
+  margin-bottom: 20px;
+
+  h2 {
+    text-align: left;
+    font-weight: bold;
+    padding: 5px 5px 5px 15px;
+    font-size: 14px;
+    margin: -7px;
+    margin-bottom: 0px;
+    background-color: $alan-red;
+    color: #fff;
+  }
+
+  ul li {
+    font-size: 12px;
+    list-style: square;
+  }
 }

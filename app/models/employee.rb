@@ -9,7 +9,7 @@
 #  birthday_date        :date
 #  health_comment       :text
 #  admin_status         :integer
-#  complete_information :boolean
+#  complete_information :boolean          default(FALSE)
 #  created_at           :datetime         not null
 #  updated_at           :datetime         not null
 #  research_name        :string
@@ -26,13 +26,21 @@ class Employee < ActiveRecord::Base
   validates :user_id, presence: true
 
   ##-- Callbacks -------------------
-  before_save :update_research_name, if: :name_changed?
+  before_validation :sanitize_email
+  before_validation :update_research_name, if: :name_changed?
+
   after_create :generate_access_token
+
 
   ##-- Associations ----------------
   belongs_to :user # Employee belongs to company that are represented by User here. I agree not a good name for company = User ;)
 
   ##-- Methods ----------------
+
+  # Beautify URLS
+  def to_param
+  "#{id} #{full_name}".parameterize
+  end
 
   # Method for searching and pagination through a collection of employee (must be in the model)
   def self.search_and_paginate(params)
@@ -88,11 +96,25 @@ class Employee < ActiveRecord::Base
     end
   end
 
+  def has_completed_information
+    self.update(:complete_information => true)
+  end
+
+  
+
   private
+
+  def sanitize_email
+    if !self.email.blank?
+      self.email = I18n.transliterate(self.email.to_s.downcase.strip.gsub(' ', '-'))
+    end
+  end
 
   # Generate access token to access the page for the Employee. Future development
   def generate_access_token
-    
+    if self.access_token.blank?
+     self.update_column(:access_token, SecureRandom.urlsafe_base64(nil, false))
+    end
   end
 
   # Update the field used for researching through employee. NOt the best technique I agree but the fastest to have decent results without paying on Heroku

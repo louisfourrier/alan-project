@@ -9,7 +9,7 @@
 #  birthday_date        :date
 #  health_comment       :text
 #  admin_status         :integer
-#  complete_information :boolean
+#  complete_information :boolean          default(FALSE)
 #  created_at           :datetime         not null
 #  updated_at           :datetime         not null
 #  research_name        :string

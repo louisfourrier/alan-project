@@ -1,11 +1,15 @@
 <div class="row border-bottom">
 <nav class="navbar navbar-static-top" role="navigation" style="margin-bottom: 0">
 <div class="navbar-header">
-    <form role="search" class="navbar-form-custom" action="search_results.html">
-        <div class="form-group">
-            <input type="text" placeholder="Recherche..." class="form-control" name="top-search" id="top-search">
-        </div>
-    </form>
+
+  <%= form_tag({controller: "search", action: "result"}, method: "get", class: "navbar-form-custom") do %>
+
+  <div class="form-group">
+      <input type="text" placeholder="Recherche..." class="form-control" name="query" id="query">
+  </div>
+
+  <% end %>
+
 </div>
     <ul class="nav navbar-top-links navbar-right">
         <li>
@@ -21,8 +25,8 @@
                 <li>
                     <a href="mailbox.html">
                         <div>
-                            <i class="fa fa-envelope fa-fw"></i> You have 16 messages
-                            <span class="pull-right text-muted small">4 minutes ago</span>
+                            <i class="fa fa-envelope fa-fw"></i> Vous avez un nouveau message de l'équipe ALAN
+                            <span class="pull-right text-muted small">Il y a 2 jours</span>
                         </div>
                     </a>
                 </li>
@@ -30,8 +34,8 @@
                 <li>
                     <a href="profile.html">
                         <div>
-                            <i class="fa fa-twitter fa-fw"></i> 3 New Followers
-                            <span class="pull-right text-muted small">12 minutes ago</span>
+                            <i class="fa fa-twitter fa-fw"></i> Alain dupont a rempli son dossier. Il est assuré
+                            <span class="pull-right text-muted small">Il y a 12 jours</span>
                         </div>
                     </a>
                 </li>
@@ -39,15 +43,15 @@
                 <li>
                     <a href="grid_options.html">
                         <div>
-                            <i class="fa fa-upload fa-fw"></i> Server Rebooted
-                            <span class="pull-right text-muted small">4 minutes ago</span>
+                            <i class="fa fa-upload fa-fw"></i> Paiement assurance ALAN effectué le 12/03/2016
+                            <span class="pull-right text-muted small">Il y a 20 jours</span>
                         </div>
                     </a>
                 </li>
                 <li class="divider"></li>
                 <li>
                     <div class="text-center link-block">
-                        <a href="notifications.html">
+                        <a href="#">
                             <strong>Voir toutes les alertes</strong>
                             <i class="fa fa-angle-right"></i>
                         </a>

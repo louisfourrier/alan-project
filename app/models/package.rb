@@ -16,11 +16,11 @@ class Package < ActiveRecord::Base
     validates :refund_percent, presence: true
 
     ##-- Callbacks -------------------
-    
+
 
     ##-- Associations ----------------
     has_many :packagings, dependent: :destroy
-    has_many :users, trough: :packagings
+    has_many :users, through: :packagings
 
     ##-- Methods----------------
 

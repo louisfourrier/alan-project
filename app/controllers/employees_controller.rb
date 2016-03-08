@@ -9,7 +9,7 @@
 #  birthday_date        :date
 #  health_comment       :text
 #  admin_status         :integer
-#  complete_information :boolean
+#  complete_information :boolean          default(FALSE)
 #  created_at           :datetime         not null
 #  updated_at           :datetime         not null
 #  research_name        :string
@@ -18,8 +18,8 @@
 #
 
 class EmployeesController < ApplicationController
-  before_action :authenticate_user
-  before_action :set_current_user
+  before_action :authenticate_user, except: [:complete_profile]
+  before_action :set_current_user, except: [:complete_profile]
 
   before_action :set_employee, only: [:show, :edit, :update, :destroy]
   layout 'administration'
@@ -57,7 +57,7 @@ class EmployeesController < ApplicationController
   # PATCH/PUT /employees/1
   def update
     if @employee.update(employee_params)
-      redirect_to @employee, notice: 'Employee was successfully updated.'
+      redirect_to user_employee_path(current_user, @employee), notice: "Les informations de base sur l'assuré ont été mises à jour"
     else
       render :edit
     end
@@ -66,7 +66,24 @@ class EmployeesController < ApplicationController
   # DELETE /employees/1
   def destroy
     @employee.destroy
-    redirect_to user_employees_path(current_user), notice: 'Employee was successfully destroyed.'
+    redirect_to user_employees_path(current_user), notice: 'Employé supprimé de vos assurés'
+  end
+
+  # Route for the complete profile function
+  def complete_profile
+    @user = User.find_by(id: params[:user_id])
+    @employee = Employee.find_by(id: params[:id])
+
+    if @user & @employee
+      if @employee.correct_access_token(params)
+        @employee.has_completed_information
+      else
+        redirect_to root_path, notice: "Impossible d'accèder à la page"
+      end
+    else
+      redirect_to root_path, notice: "Impossible d'accèder à la page"
+    end
+
   end
 
   private

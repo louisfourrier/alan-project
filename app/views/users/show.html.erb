@@ -25,7 +25,14 @@
 <div class="col-md-4">
   <div class="widget lazur-bg no-padding">
     <div class="p-m">
-      <h1 class="m-xs text-center">38 employés sont assurés</h1>
+      <h1 class="m-xs text-center">
+        <% if @employees_count != 1 %>
+          <%= @employees_count %> employés sont assurés
+        <% else %>
+          <%= @employees_count %> employé est assuré
+        <% end %>
+
+      </h1>
       <h3 class="font-bold text-center ">
         3 notifications importantes concernant vos employés
       </h3>
