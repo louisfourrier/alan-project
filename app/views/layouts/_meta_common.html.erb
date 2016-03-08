@@ -1,0 +1,40 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title><%= content_for?(:title) ? yield(:title) : "Alan assurance santé pour entreprise" %></title>
+<meta name="description" content="<%= content_for?(:description) ? yield(:description) : 'La nouvelle assurance santé !' %>">
+<%= favicon_link_tag 'favicon.ico' %>
+
+<!-- Schema.org markup for Google+ -->
+<meta itemprop="name" content="<%= content_for?(:title) ? yield(:title) : 'Alan assurance santé pour entreprise' %>">
+<meta itemprop="description" content="<%= content_for?(:description) ? yield(:description) : 'La nouvelle assurance santé !' %>">
+
+<meta name="keywords" lang="fr" content="<%= content_for?(:keywords) ? yield(:keywords) : 'assurance, alan, mutuelle' %>">
+<meta itemprop="image" content="<%= content_for?(:image) ? yield(:image) : "" %>">
+
+
+
+<!-- Twitter Card data -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:site" content="@Happy_Dining_">
+<meta name="twitter:title" content="<%= content_for?(:title) ? yield(:title) : 'Alan assurance santé pour entreprise' %>">
+<meta name="twitter:description" content="<%= content_for?(:description) ? yield(:description) : 'La nouvelle assurance santé !' %>">
+<meta name="twitter:image" content="<%= content_for?(:image) ? yield(:image) : '' %>">
+<meta name="twitter:url" content='<%= "https://#{request.host+request.fullpath}" %>'>
+
+<!-- Open Graph data -->
+
+<meta property="fb:app_id" content="1488603498124939" />
+<meta property="og:title" content="<%= content_for?(:title) ? yield(:title) : 'Alan assurance santé pour entreprise' %>" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content='<%= "https://#{request.host+request.fullpath}" %>'/>
+<meta property="og:image" content="<%= content_for?(:image) ? yield(:image) : '' %>" />
+<meta property="og:description" content="<%= content_for?(:description) ? yield(:description) : 'La nouvelle assurance santé !' %>" />
+<meta property="og:site_name" content="Happy Dining" />
+<meta property="og:locale" content="FR" />
+
+<!-- Google plus author -->
+<link rel="publisher" href=""/>
+
+
+<!-- For the HTTPS domain -->
+<link rel="canonical" href='<%= "https://#{request.host+request.fullpath}" %>' itemprop="url" />

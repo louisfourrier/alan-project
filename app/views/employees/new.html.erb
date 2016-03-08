@@ -1,0 +1,55 @@
+<%= provide(:main_title, "Ajout d'un nouvel employé" ) %>
+<%= content_for(:breadcrumb) do %>
+<li>
+    <%= link_to "Accueil", current_user %>
+</li>
+<li>
+  <%= link_to "Employés assurés", user_employees_path %>
+</li>
+<li class="active">
+    <strong>Nouvel employé</strong>
+</li>
+<% end %>
+
+
+
+<div class="row">
+
+    <div class="col-md-12">
+<div class="wrapper wrapper-content animated fadeInRight">
+      <div class="ibox-content m-b-sm border-bottom">
+
+
+          <div class="p-xs">
+              <div class="pull-left m-r-md">
+                  <i class="fa fa-users text-navy mid-icon"></i>
+              </div>
+              <h2>Ajout d'un nouvel assuré</h2>
+              <span>Vous pouvez ajouter très facilement un nouvel employé à la liste de vos assurés. Alan se charge du reste !</span>
+          </div>
+
+
+      </div>
+
+
+
+
+      </div>
+    </div>
+  </div>
+
+
+  <div class="row">
+
+      <div class="col-md-6 col-md-offset-3">
+
+          <div class="ibox-content ">
+            <h2 class="m-lg text-center">Un email sera envoyé à votre employé pour compléter son profil</h2>
+
+
+          <%= render "form" %>
+
+        </div>
+
+      </div>
+    </div>

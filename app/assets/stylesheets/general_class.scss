@@ -1,0 +1,106 @@
+
+// Radius
+
+.no-border-radius{
+  border-radius: 0px;
+}
+
+.vertical-center{
+  display: -webkit-box;
+display: -webkit-flex;
+display: -moz-box;
+display: -ms-flexbox;
+display: flex;
+-webkit-flex-align: center;
+-ms-flex-align: center;
+-webkit-align-items: center;
+align-items: center;
+
+}
+
+
+
+// Text Color
+
+.text-green{
+  color: $alan-green;
+}
+
+.text-grey{
+  color: $alan-grey;
+}
+
+.text-white{
+  color: white;
+}
+
+
+// Margin
+
+.no-margin{
+  margin: 0px;
+}
+
+.margin-top-10{
+  margin-top: 10px;
+}
+
+// Padding
+
+.padding-5{
+  padding: 5px;
+}
+
+.padding-10{
+  padding: 10px;
+}
+
+.padding-15{
+  padding: 15px;
+}
+
+.padding-20{
+  padding: 20px;
+}
+
+
+// Default class for landing pages first section
+.back-image-landing{
+  margin-top: -70px;
+  background-position: center center;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
+  -o-background-size: cover;
+  padding-bottom: 20px;
+  padding-top: 100px;
+  width: 100%;
+
+  @media screen and (max-width: 1000px){
+  h1.text-50{
+    font-size: 40px;
+  }
+}
+}
+
+.background-opacity{
+  opacity: 0.90;
+}
+
+.back-image-assurance{
+   background: image-url('assurance-image-1.jpg') no-repeat;
+   -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
+  -o-background-size: cover;
+}
+
+@media screen and (min-width: 1000px){
+  .full-height{
+    height:100vh;
+  }
+}
+
+.grey-background {
+ background-color: $alan-light-grey;
+}

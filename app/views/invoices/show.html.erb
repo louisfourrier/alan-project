@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @invoice.user %>
+</p>
+
+<p>
+  <strong>Emission date:</strong>
+  <%= @invoice.emission_date %>
+</p>
+
+<p>
+  <strong>Begin date:</strong>
+  <%= @invoice.begin_date %>
+</p>
+
+<p>
+  <strong>End date:</strong>
+  <%= @invoice.end_date %>
+</p>
+
+<p>
+  <strong>Amount ht:</strong>
+  <%= @invoice.amount_ht %>
+</p>
+
+<p>
+  <strong>Amount ttc:</strong>
+  <%= @invoice.amount_ttc %>
+</p>
+
+<p>
+  <strong>Paid status:</strong>
+  <%= @invoice.paid_status %>
+</p>
+
+<%= link_to 'Edit', edit_invoice_path(@invoice) %> |
+<%= link_to 'Back', invoices_path %>

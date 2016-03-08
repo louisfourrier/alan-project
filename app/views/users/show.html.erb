@@ -1,0 +1,133 @@
+<%= provide(:main_title, "Accueil" ) %>
+<%= content_for(:breadcrumb) do %>
+
+<li class="active">
+<strong>Résumé de votre compte ALAN</strong>
+</li>
+<% end %>
+
+<div class="row">
+  <div class="wrapper wrapper-content animated fadeInRight">
+<div class="col-md-4">
+  <div class="widget lazur-bg no-padding">
+    <div class="p-m">
+      <h1 class="m-xs text-center">Vous suivez le plan A</h1>
+
+      <h3 class="font-bold text-center ">
+        50 % de remboursement / 10 euros par mois par employé
+      </h3>
+      <h3 class="text-center">
+        <%= link_to "Voir mon plan", packages_path, class: "btn btn-primary text-uppercase" %></h3>
+    </div>
+
+  </div>
+</div>
+<div class="col-md-4">
+  <div class="widget lazur-bg no-padding">
+    <div class="p-m">
+      <h1 class="m-xs text-center">38 employés sont assurés</h1>
+      <h3 class="font-bold text-center ">
+        3 notifications importantes concernant vos employés
+      </h3>
+      <h3 class="text-center">
+        <%= link_to "Gestion des assurés", user_employees_path(@user), class: "btn btn-primary text-uppercase" %></h3>
+    </div>
+
+  </div>
+</div>
+<div class="col-md-4">
+  <div class="widget lazur-bg no-padding">
+    <div class="p-m">
+      <h1 class="m-xs text-center">Cout mensuel : 420 € / mois</h1>
+
+      <h3 class="font-bold text-center ">
+        Prochain prélevement : 11/04/2016
+      </h3>
+      <h3 class="text-center">
+        <%= link_to "Suivi des paiements", user_invoices_path(current_user), class: "btn btn-primary text-uppercase" %></h3>
+    </div>
+
+  </div>
+</div>
+</div>
+</div>
+
+<div class="row">
+<div class="col-md-6">
+  <div class="wrapper wrapper-content animated fadeInRight">
+
+    <div class="ibox-content m-b-sm border-bottom">
+      <div class="p-xs">
+        <div class="pull-left m-r-md">
+          <i class="fa fa-bell text-navy mid-icon"></i>
+        </div>
+        <h2>Notifications sur votre activité</h2>
+        <span>Les dernières alertes et notifications de votre compte Alan Assurance</span>
+      </div>
+    </div>
+
+    <div class="ibox-content forum-container">
+
+
+
+      <%= render partial: "notifications/notification", locals:{ title: "Nouveau paiement effectué", description: "Un nouveau paiement a été effectué par ALAN, la facture est disponible dans l'espace paiements", date: "01/04/2016", active: "active", type: "fa-money" } %>
+
+      <%= render partial: "notifications/notification", locals:{ title: "Nouvel Employé assuré : Alain Dupont a complété son dossier", description: "Alain dupont a complété son dossier. Il est désormais assuré par Alan", date: "15/03/2016", active: "", type: "fa-user" } %>
+
+      <%= render partial: "notifications/notification", locals:{ title: "Nouvelle fonctionnalité sur Alan", description: "Ajouter un employé en deux clics !", date: "15/03/2016", active: "", type: "fa-edit" } %>
+
+      <%= render partial: "notifications/notification", locals:{ title: "Création d'un nouvel employé : Alain Dupont", description: "Vous avez inscrit un nouvel employé (Alain Dupont). Un email lui a été envoyé afin qu'il complète son dossier", date: "15/03/2016", active: "", type: "fa-user" } %>
+
+      <%= render partial: "notifications/notification", locals:{ title: "Nouveau paiement effectué", description: "Un nouveau paiement a été effectué par ALAN, la facture est disponible dans l'espace paiements", date: "01/04/2016", active: "", type: "fa-money" } %>
+
+      <%= render partial: "notifications/notification", locals:{ title: "Nouvel Employé assuré : Alain Dupont a complété son dossier", description: "Alain dupont a complété son dossier. Il est désormais assuré par Alan", date: "15/03/2016", active: "", type: "fa-user" } %>
+
+      <%= render partial: "notifications/notification", locals:{ title: "Nouvelle fonctionnalité sur Alan", description: "Ajouter un employé en deux clics !", date: "15/03/2016", active: "", type: "fa-edit" } %>
+
+      <%= render partial: "notifications/notification", locals:{ title: "Création d'un nouvel employé : Alain Dupont", description: "Vous avez inscrit un nouvel employé (Alain Dupont). Un email lui a été envoyé afin qu'il complète son dossier", date: "15/03/2016", active: "", type: "fa-user" } %>
+
+
+
+
+
+    </div>
+  </div>
+</div>
+
+<div class="col-md-6">
+  <div class="wrapper wrapper-content animated fadeInRight">
+
+    <div class="ibox-content m-b-sm border-bottom">
+      <div class="p-xs">
+        <div class="pull-left m-r-md">
+          <i class="fa fa-globe text-navy mid-icon"></i>
+        </div>
+        <h2>Les dernières nouvelles sur la législation relative à l'assurance</h2>
+        <span>Toutes les informations légales sur vos obligations en tant qu'employeur.</span>
+      </div>
+    </div>
+
+    <div class="ibox-content forum-container">
+
+      <%= render partial: "notifications/notification", locals:{ title: "Vos obligations légales, Mise à jour", description: "Les accords de branche etc...", date: "26/09/2015", active: "active", type: "fa-shield" } %>
+
+      <%= render partial: "notifications/notification", locals:{ title: "Flash, vous n'êtes plus obligés d'enregistrer vos employés....", description: "Nouvelles Flash sur la santé ou la legislation", date: "26/09/2015", active: "", type: "fa-bolt" } %>
+
+      <%= render partial: "notifications/notification", locals:{ title: "Evénement de ALAN Assurance", description: "Journée Alan réservez votre journée", date: "26/08/2015", active: "", type: "fa-calendar" } %>
+
+      <%= render partial: "notifications/notification", locals:{ title: "Attention vous allez être dans l'obligation d'assurer tous vos salariés", description: "La nouvelle loi prévoit.....", date: "26/08/2015", active: "", type: "fa-bomb" } %>
+
+      <%= render partial: "notifications/notification", locals:{ title: "Vos obligations légales, Mise à jour", description: "Les accords de branche etc...", date: "26/09/2015", active: "", type: "fa-shield" } %>
+
+      <%= render partial: "notifications/notification", locals:{ title: "Flash, vous n'êtes plus obligés d'enregistrer vos employés....", description: "Nouvelles Flash sur la santé ou la legislation", date: "26/09/2015", active: "", type: "fa-bolt" } %>
+
+      <%= render partial: "notifications/notification", locals:{ title: "Evénement de ALAN Assurance", description: "Journée Alan réservez votre journée", date: "26/08/2015", active: "", type: "fa-calendar" } %>
+
+      <%= render partial: "notifications/notification", locals:{ title: "Attention vous allez être dans l'obligation d'assurer tous vos salariés", description: "La nouvelle loi prévoit.....", date: "26/08/2015", active: "", type: "fa-bomb" } %>
+
+
+
+    </div>
+  </div>
+</div>
+</div>

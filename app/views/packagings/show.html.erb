@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Package:</strong>
+  <%= @packaging.package %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @packaging.user %>
+</p>
+
+<p>
+  <strong>Refund percent:</strong>
+  <%= @packaging.refund_percent %>
+</p>
+
+<%= link_to 'Edit', edit_packaging_path(@packaging) %> |
+<%= link_to 'Back', packagings_path %>

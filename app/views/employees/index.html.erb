@@ -1,0 +1,104 @@
+<%= provide(:main_title, "Gestion des assurances" ) %>
+<%= content_for(:breadcrumb) do %>
+<li>
+<a href="index.html">Accueil</a>
+</li>
+<li class="active">
+<strong>Employés assurés</strong>
+</li>
+<% end %>
+
+<div class="row">
+
+<div class="col-md-12">
+  <div class="wrapper wrapper-content animated fadeInRight">
+    <div class="ibox-content m-b-sm border-bottom">
+
+      <div class="pull-right">
+        <%= link_to "Ajouter un nouvel Employé", new_user_employee_path(@user),class: "btn btn-primary" %>
+      </div>
+
+      <div class="p-xs">
+        <div class="pull-left m-r-md">
+          <i class="fa fa-users text-navy mid-icon"></i>
+        </div>
+        <h2>
+          <% if @employees.count > 1 %>
+          <%= @employees.count %>
+          Employés assurés
+
+        <% else %>
+          <%= @employees.count %>
+          Employé assuré
+
+          <% end %>
+
+        </h2>
+        <span>Vous pouvez suivre ici le statut de chacun de vos employés et gérer l'assurance pour vos employés</span>
+      </div>
+
+    </div>
+
+    <% if !@employees.empty? %>
+
+    <div class="ibox-content forum-container">
+
+      <% @employees.each do |employee| %>
+      <div class="forum-item active">
+        <div class="row">
+          <div class="col-md-9">
+            <div class="forum-icon">
+              <i class="fa fa-user"></i>
+            </div>
+            <%= link_to employee.full_name, user_employee_path(@user, employee), class: "forum-item-title" %>
+
+            <div class="forum-sub-title">Assuré depuis le :
+              <%= l employee.subscription_date %></div>
+          </div>
+          <div class="col-md-1 forum-info">
+            <span class="views-number">
+              28
+            </span>
+            <div>
+              <small>ans</small>
+            </div>
+          </div>
+          <div class="col-md-2 forum-info">
+            <span class="views-number">
+              <i class="fa fa-check"></i>
+            </span>
+            <div>
+              <small>Dossier complet</small>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <% end %>
+
+    </div>
+
+  <% else %>
+
+    <div class="ibox-content ">
+
+      <div class="p-xs">
+
+        <h3>Vous n'avez pas encore assuré d'employés sur Alan. Rien de plus simple il vous suffit de nous donner son prénom et son nom et nous allons deviner son adresse mail et lui envoyer un mail afin qu'il complète son profil</h3>
+
+      </div>
+
+      <div class="text-center">
+        <%= link_to new_user_employee_path(@user),class: "btn btn-primary text-uppercase" do %>
+        <i class="fa fa-user"></i>
+        Ajouter un nouvel Employé
+        <% end %>
+      </div>
+
+    </div>
+    <% end %>
+
+  </div>
+</div>
+</div>

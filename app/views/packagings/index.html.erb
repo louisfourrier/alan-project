@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Packagings</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Package</th>
+      <th>User</th>
+      <th>Refund percent</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @packagings.each do |packaging| %>
+      <tr>
+        <td><%= packaging.package %></td>
+        <td><%= packaging.user %></td>
+        <td><%= packaging.refund_percent %></td>
+        <td><%= link_to 'Show', packaging %></td>
+        <td><%= link_to 'Edit', edit_packaging_path(packaging) %></td>
+        <td><%= link_to 'Destroy', packaging, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Packaging', new_packaging_path %>

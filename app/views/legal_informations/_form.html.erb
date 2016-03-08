@@ -1,0 +1,33 @@
+<%= form_for(@legal_information) do |f| %>
+  <% if @legal_information.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@legal_information.errors.count, "error") %> prohibited this legal_information from being saved:</h2>
+
+      <ul>
+      <% @legal_information.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :short_description %><br>
+    <%= f.text_area :short_description %>
+  </div>
+  <div class="field">
+    <%= f.label :content %><br>
+    <%= f.text_area :content %>
+  </div>
+  <div class="field">
+    <%= f.label :publication_date %><br>
+    <%= f.datetime_select :publication_date %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

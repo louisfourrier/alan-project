@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @legal_information.name %>
+</p>
+
+<p>
+  <strong>Short description:</strong>
+  <%= @legal_information.short_description %>
+</p>
+
+<p>
+  <strong>Content:</strong>
+  <%= @legal_information.content %>
+</p>
+
+<p>
+  <strong>Publication date:</strong>
+  <%= @legal_information.publication_date %>
+</p>
+
+<%= link_to 'Edit', edit_legal_information_path(@legal_information) %> |
+<%= link_to 'Back', legal_informations_path %>

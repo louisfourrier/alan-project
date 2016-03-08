@@ -1,0 +1,42 @@
+<%= provide(:main_title, "Factures Alan" ) %>
+<%= content_for(:breadcrumb) do %>
+<li>
+<%= link_to "Accueil", current_user %>
+</li>
+
+<li class="active">
+<strong>Facturation et Paiements</strong>
+</li>
+<% end %>
+
+<div class="row">
+<div class="col-lg-12">
+  <div class="wrapper wrapper-content animated fadeInRight">
+    <div class="ibox-content m-b-sm border-bottom">
+
+      <div class="p-xs">
+        <div class="pull-left m-r-md">
+          <i class="fa fa-users text-navy mid-icon"></i>
+        </div>
+        <h2>Liste de vos factures</h2>
+        <span>Vous pouvez suivre ici l'ensemble de vos factures ALAN. Beaucoup de travail de présentation encore ;)</span>
+      </div>
+
+    </div>
+  </div>
+</div>
+</div>
+
+<div class="row">
+<div class="col-lg-12">
+  <div class="wrapper wrapper-content animated fadeInRight">
+    <%= render partial: "invoices/invoice" %>
+    <%= render partial: "invoices/invoice" %>
+
+    <%= render partial: "invoices/invoice" %>
+
+    <%= render partial: "invoices/invoice" %>
+
+  </div>
+</div>
+</div>

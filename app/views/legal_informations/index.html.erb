@@ -1,0 +1,91 @@
+<%= provide(:main_title, "Portail d'informations légales" ) %>
+<%= content_for(:breadcrumb) do %>
+<li>
+    <a href="index.html">Accueil</a>
+</li>
+<li class="active">
+    <strong>Portail Informations Légales</strong>
+</li>
+<% end %>
+
+
+
+<div class="row">
+    <div class="col-lg-12">
+
+        <div class="wrapper wrapper-content animated fadeInUp">
+
+          <div class="ibox-content m-b-sm border-bottom">
+            <div class="p-xs">
+              <div class="pull-left m-r-md">
+                <i class="fa fa-star text-navy mid-icon"></i>
+              </div>
+              <h2>Informations en favoris</h2>
+              <span>Toutes vos informations que vous avez ajoutées à vos favoris. (Liens à mettre, et dans le backend gestion des favoris, super simple...)</span>
+            </div>
+          </div>
+
+            <ul class="notes">
+                <li>
+                    <div>
+                        <small>12-04-2015</small>
+                        <h4>Les obligations d'assurance pour l'employeur</h4>
+                        <p>Récapitulatif sur les obligations légales pour les startups.</p>
+                        <a href="#"><i class="fa fa-trash-o "></i></a>
+                    </div>
+                </li>
+                <li>
+                    <div>
+                        <small>16-12-2015</small>
+                        <h4>La branche SYNTEC </h4>
+                        <p>Toutes les informations sur l'accord de branche SYNTEC.</p>
+                        <a href="#"><i class="fa fa-trash-o "></i></a>
+                    </div>
+                </li>
+
+
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-lg-12">
+
+        <div class="wrapper wrapper-content animated fadeInUp">
+
+          <div class="ibox-content m-b-sm border-bottom">
+            <div class="p-xs">
+              <div class="pull-left m-r-md">
+                <i class="fa fa-globe text-navy mid-icon"></i>
+              </div>
+              <h2>Les dernières nouvelles sur la législation relative à l'assurance</h2>
+              <span>Toutes les informations légales sur vos obligations en tant qu'employeur.</span>
+            </div>
+          </div>
+
+          <div class="ibox-content forum-container">
+
+            <%= render partial: "notifications/notification", locals:{ title: "Vos obligations légales, Mise à jour", description: "Les accords de branche etc...", date: "26/09/2015", active: "active", type: "fa-shield" } %>
+
+            <%= render partial: "notifications/notification", locals:{ title: "Flash, vous n'êtes plus obligés d'enregistrer vos employés....", description: "Nouvelles Flash sur la santé ou la legislation", date: "26/09/2015", active: "", type: "fa-bolt" } %>
+
+            <%= render partial: "notifications/notification", locals:{ title: "Evénement de ALAN Assurance", description: "Journée Alan réservez votre journée", date: "26/08/2015", active: "", type: "fa-calendar" } %>
+
+            <%= render partial: "notifications/notification", locals:{ title: "Attention vous allez être dans l'obligation d'assurer tous vos salariés", description: "La nouvelle loi prévoit.....", date: "26/08/2015", active: "", type: "fa-bomb" } %>
+
+            <%= render partial: "notifications/notification", locals:{ title: "Vos obligations légales, Mise à jour", description: "Les accords de branche etc...", date: "26/09/2015", active: "", type: "fa-shield" } %>
+
+            <%= render partial: "notifications/notification", locals:{ title: "Flash, vous n'êtes plus obligés d'enregistrer vos employés....", description: "Nouvelles Flash sur la santé ou la legislation", date: "26/09/2015", active: "", type: "fa-bolt" } %>
+
+            <%= render partial: "notifications/notification", locals:{ title: "Evénement de ALAN Assurance", description: "Journée Alan réservez votre journée", date: "26/08/2015", active: "", type: "fa-calendar" } %>
+
+            <%= render partial: "notifications/notification", locals:{ title: "Attention vous allez être dans l'obligation d'assurer tous vos salariés", description: "La nouvelle loi prévoit.....", date: "26/08/2015", active: "", type: "fa-bomb" } %>
+
+
+
+          </div>
+
+        </div>
+          </div>
+            </div>

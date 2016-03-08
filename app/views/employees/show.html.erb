@@ -1,0 +1,331 @@
+<%= provide(:main_title, @employee.full_name ) %>
+<%= content_for(:breadcrumb) do %>
+<li>
+<%= link_to "Accueil", current_user %>
+</li>
+<li>
+<%= link_to "Employés assurés", user_employees_path %>
+</li>
+<li class="active">
+<strong><%= @employee.full_name %></strong>
+</li>
+<% end %>
+
+<div class="row">
+<div class="col-md-4">
+  <div class="widget lazur-bg no-padding">
+    <div class="p-m">
+      <h1 class="m-xs text-center">Assuré par le Plan A</h1>
+
+      <h3 class="font-bold text-center ">
+        assuré depuis le :
+        <%= l @employee.subscription_date %>
+      </h3>
+
+    </div>
+
+  </div>
+</div>
+<div class="col-md-4">
+  <div class="widget lazur-bg no-padding">
+    <div class="p-m">
+      <h1 class="m-xs text-center">Coût employé : 10 € / mois</h1>
+      <h3 class="font-bold text-center ">
+        La part du cout de l'assurance supporté par l'employé
+      </h3>
+
+    </div>
+
+  </div>
+</div>
+<div class="col-md-4">
+  <div class="widget lazur-bg no-padding">
+    <div class="p-m">
+      <h1 class="m-xs text-center">Coût employeur : 15 € / mois</h1>
+
+      <h3 class="font-bold text-center ">
+        Votre part du cout mensuel
+      </h3>
+
+    </div>
+
+  </div>
+</div>
+</div>
+
+<div class="row">
+
+<div class="col-md-12">
+  <div class="wrapper wrapper-content animated fadeInRight">
+    <div class="ibox">
+      <div class="ibox-content">
+        <div class="row">
+          <div class="col-lg-12">
+            <h2 class="page-header">Informations générales</h2>
+            <div>
+              <h3>Dossier complété :
+                <%= @employee.complete_information %></h3>
+            </div>
+            <div>
+              <h3>Assuré :
+                <%= @employee.complete_information %></h3>
+            </div>
+            <div>
+              <h3>Date de souscription :
+                <%= l @employee.subscription_date %></h3>
+            </div>
+            <div>
+              <h3>Assuré depuis le :
+                <%= l @employee.subscription_date %></h3>
+            </div>
+            <div>
+              <h3>Email Entreprise :
+                <%= @employee.guess_email %></h3>
+            </div>
+          </div>
+        </div>
+
+        <div class="row m-t-sm">
+          <div class="col-lg-12">
+
+            <h2 class="page-header">
+              Options choisies <small>(peut être à ne pas afficher pour l'employeur mais ca peut etre assurance conjoint par exemple, prévoyance etc..)</small></h2>
+            <div class="panel blank-panel">
+
+              <div class="tab-pane" id="tab-2">
+
+                <table class="table table-striped">
+                  <thead>
+                    <tr>
+                      <th>Choix</th>
+                      <th>Nom de l'option</th>
+                      <th>Date de début</th>
+
+                      <th>Détails</th>
+                      <th>Tarifs</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <span class="label label-primary">
+                          <i class="fa fa-check"></i>
+                        </span>
+                      </td>
+                      <td>
+                        Options 1
+                      </td>
+                      <td>
+                        12/04/2016
+                      </td>
+
+                      <td>
+                        <p class="small">
+                          L'option dentaire permet de se faire rembourser les frais dentaires .......
+                        </p>
+                      </td>
+                      <td>
+                        10 €
+                      </td>
+
+                    </tr>
+
+                    <tr>
+                      <td>
+                        <span class="label label-primary">
+                          <i class="fa fa-check"></i>
+                        </span>
+                      </td>
+                      <td>
+                        Options 2
+                      </td>
+                      <td>
+                        12/04/2016
+                      </td>
+
+                      <td>
+                        <p class="small">
+                          L'option dentaire permet de se faire rembourser les frais dentaires .......
+                        </p>
+                      </td>
+
+                      <td>
+                        10 €
+                      </td>
+
+                    </tr>
+                    <tr>
+                      <td>
+                        <span class="label label-primary">
+                          <i class="fa fa-check"></i>
+                        </span>
+                      </td>
+                      <td>
+                        Options 3
+                      </td>
+                      <td>
+                        12/04/2016
+                      </td>
+
+                      <td>
+                        <p class="small">
+                          L'option dentaire permet de se faire rembourser les frais dentaires .......
+                        </p>
+                      </td>
+
+                      <td>
+                        10 €
+                      </td>
+
+                    </tr>
+                    <tr>
+                      <td>
+                        <span class="label label-primary">
+                          <i class="fa fa-check"></i>
+                        </span>
+                      </td>
+                      <td>
+                        Options 4
+                      </td>
+                      <td>
+                        12/04/2016
+                      </td>
+
+                      <td>
+                        <p class="small">
+                          L'option dentaire permet de se faire rembourser les frais dentaires .......
+                        </p>
+                      </td>
+
+                      <td>
+                        10 €
+                      </td>
+
+                    </tr>
+                    <tr>
+                      <td>
+                        <span class="label label-primary">
+                          <i class="fa fa-check"></i>
+                        </span>
+                      </td>
+                      <td>
+                        Options 5
+                      </td>
+                      <td>
+                        12/04/2016
+                      </td>
+
+                      <td>
+                        <p class="small">
+                          L'option dentaire permet de se faire rembourser les frais dentaires .......
+                        </p>
+                      </td>
+
+                      <td>
+                        10 €
+                      </td>
+
+                    </tr>
+                    <tr>
+                      <td>
+                        <span class="label label-primary">
+                          <i class="fa fa-check"></i>
+                        </span>
+                      </td>
+                      <td>
+                        Options 6
+                      </td>
+                      <td>
+                        12/04/2016
+                      </td>
+
+                      <td>
+                        <p class="small">
+                          L'option dentaire permet de se faire rembourser les frais dentaires .......
+                        </p>
+                      </td>
+
+                      <td>
+                        15 €
+                      </td>
+
+                    </tr>
+                    <tr>
+                      <td>
+                        <span class="label label-primary">
+                          <i class="fa fa-check"></i>
+                        </span>
+                      </td>
+                      <td>
+                        Options 7
+                      </td>
+                      <td>
+                        12/04/2016
+                      </td>
+
+                      <td>
+                        <p class="small">
+                          L'option dentaire permet de se faire rembourser les frais dentaires .......
+                        </p>
+                      </td>
+                      <td>
+                        30 €
+                      </td>
+
+                    </tr>
+
+                  </tbody>
+                </table>
+
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <div class="row m-t-sm">
+          <div class="col-lg-12">
+
+            <h2 class=""> Notifications du compte </h2>
+
+            <div class="ibox-content ">
+
+              <%= render partial: "notifications/notification", locals:{ title: "Dossier Rempli", description: "Les accords de branche etc...", date: "26/02/2016 15h37", active: "active", type: "fa-user" } %>
+
+              <%= render partial: "notifications/notification", locals:{ title: "Employé inscrit, dossier à completer envoyé", description: "Un dossier a été envoyé afin que votre employé remplisse les derniers éléments nécessaires à l'assurance", date: "23/02/2016 16h00", active: "", type: "fa-user" } %>
+
+
+            </div>
+
+            </div>
+          </div>
+
+          <div class="row m-t-sm">
+            <div class="col-lg-12">
+
+              <h2 class="page-header"> Suppression du compte</h2>
+
+              <div class="alert alert-info" >
+                Si vous souhaitez supprimer un employé de la liste de vos assurés, vous pouvez le faire depuis votre esapge de gestion Alan. N'oubliez pas vos obligations légales à ce sujet. Consultez <a href="#">notre article</a> pour en savoir plus.
+              </div>
+
+              <div class=" padding-5">
+                  <%= link_to "Supprimer cet employé des assurés", user_employee_path(@user, @employee), method: :delete, data: { confirm: 'Etes vous sur ?' }, class: "btn btn-danger" %>
+              </div>
+
+
+
+              </div>
+            </div>
+
+
+
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+</div>
