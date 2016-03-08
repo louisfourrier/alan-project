@@ -1,7 +1,10 @@
 <%= form_for([@user, @employee],  html: {class: "form-horizontal"}) do |f| %>
   <% if @employee.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@employee.errors.count, "error") %> prohibited this employee from being saved:</h2>
+
+
+
+    <div id="error_explanation" >
+      <h2><%= pluralize(@employee.errors.count, "erreur") %> dans le formulaire :</h2>
 
       <ul>
       <% @employee.errors.full_messages.each do |message| %>
@@ -9,6 +12,7 @@
       <% end %>
       </ul>
     </div>
+
   <% end %>
 
 
@@ -16,18 +20,51 @@
   <div class="form-group">
     <%= f.label :first_name, "Prénom", class: "col-sm-2 control-label" %>
     <div class="col-sm-10">
-      <%= f.text_field :first_name, class: "form-control" %>
+      <%= f.text_field :first_name, class: "form-control", placeholder: "Alain" %>
     </div>
   </div>
   <div class="hr-line-dashed"></div>
   <div class="form-group">
     <%= f.label :last_name, "Nom", class: "col-sm-2 control-label"  %>
         <div class="col-sm-10">
-    <%= f.text_field :last_name, class: "form-control" %>
+    <%= f.text_field :last_name, class: "form-control", placeholder: "Dupont"  %>
+    </div>
+  </div>
+  <div class="hr-line-dashed"></div>
+  <div class="form-group">
+    <%= f.label :email, "Email", class: "col-sm-2 control-label"  %>
+        <div class="col-sm-10">
+    <%= f.email_field :email, class: "form-control guess-email", placeholder: "alain.dupont@yourcompany.fr" %>
     </div>
   </div>
   <div class="hr-line-dashed"></div>
   <div class="form-group text-center">
     <%= f.submit "Assurer", class: "btn btn-primary btn-lg text-uppercase" %>
   </div>
+<% end %>
+
+
+<%= content_for(:end_script) do %>
+<script>
+
+function update_email_field(){
+  var first_name = $('#employee_first_name').val();
+  var last_name = $('#employee_last_name').val();
+  var domain = "<%= @user.company_domain.to_s %>";
+  var email = first_name + '.' + last_name + '@' + domain;
+  $('#employee_email').val(email);
+
+
+}
+$(function() {
+  $('#employee_first_name').on( "change",function() {
+    update_email_field();
+  })
+  $('#employee_last_name').on( "change",function() {
+    update_email_field();
+  })
+
+})
+</script>
+
 <% end %>

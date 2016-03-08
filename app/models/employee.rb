@@ -12,6 +12,9 @@
 #  complete_information :boolean
 #  created_at           :datetime         not null
 #  updated_at           :datetime         not null
+#  research_name        :string
+#  email                :string
+#  access_token         :string
 #
 
 class Employee < ActiveRecord::Base
@@ -19,13 +22,15 @@ class Employee < ActiveRecord::Base
 
   ##-- Validations -----------------
   validates :first_name, presence: true
-  validates :last_name, presence: true # TO prevent duplication
+  validates :last_name, presence: true
   validates :user_id, presence: true
 
   ##-- Callbacks -------------------
+  before_save :update_research_name, if: :name_changed?
+  after_create :generate_access_token
 
   ##-- Associations ----------------
-  belongs_to :user
+  belongs_to :user # Employee belongs to company that are represented by User here. I agree not a good name for company = User ;)
 
   ##-- Methods ----------------
 
@@ -43,8 +48,8 @@ class Employee < ActiveRecord::Base
       else
           case key.to_sym
           when :name
-           name = value.to_s.strip.downcase
-           scope.where('employees.first_name ILIKE ? OR employees.last_name ILIKE ? OR employees.email ILIKE ?',  "%#{name}%", "%#{name}%", "%#{name}%")
+           name = I18n.transliterate(value.to_s.downcase.strip).to_s # Just remove the accents and normalize
+           scope.where('employees.research_name ILIKE ? OR employees.email ILIKE ?',  "%#{name}%", "%#{name}%", "%#{name}%")
 
           when :order # order=field-(ASC|DESC)
             attribute, order = value.split("-")
@@ -61,10 +66,18 @@ class Employee < ActiveRecord::Base
     end
   end
 
+  # Full_name method to display the first_name followed by the last_name
   def full_name
-    first_name.to_s + ' ' + last_name.to_s
+    return (first_name.to_s + ' ' + last_name.to_s).strip
   end
 
+  # Method to simualate a Date of subscription. Just For présentation
+  #TODO: Remove when progress
+  def subscription_date
+    return Date.today - 10.day
+  end
+
+  # Guess the email of the employee
   def guess_email
     company_domain = self.user.company_domain
     if company_domain
@@ -75,9 +88,23 @@ class Employee < ActiveRecord::Base
     end
   end
 
-  def subscription_date
-    return Date.today - 10.day
+  private
+
+  # Generate access token to access the page for the Employee. Future development
+  def generate_access_token
+    
   end
+
+  # Update the field used for researching through employee. NOt the best technique I agree but the fastest to have decent results without paying on Heroku
+  def update_research_name
+    self.research_name = I18n.transliterate(self.full_name.to_s.downcase.strip).to_s
+  end
+
+  # Method to know when the research_name must be updated
+  def name_changed?
+    first_name_changed? || last_name_changed?
+  end
+
 
 
 end

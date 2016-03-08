@@ -12,6 +12,9 @@
 #  complete_information :boolean
 #  created_at           :datetime         not null
 #  updated_at           :datetime         not null
+#  research_name        :string
+#  email                :string
+#  access_token         :string
 #
 
 class EmployeesController < ApplicationController
@@ -28,7 +31,7 @@ class EmployeesController < ApplicationController
 
   # GET /employees/1
   def show
-    
+
   end
 
   # GET /employees/new
@@ -82,6 +85,6 @@ class EmployeesController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def employee_params
-      params.require(:employee).permit(:first_name, :last_name, :user_id, :birthday_date, :health_comment, :admin_status, :complete_information)
+      params.require(:employee).permit(:first_name, :last_name, :user_id, :birthday_date, :health_comment, :admin_status, :complete_information, :email)
     end
 end

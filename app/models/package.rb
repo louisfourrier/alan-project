@@ -10,4 +10,19 @@
 #
 
 class Package < ActiveRecord::Base
+    ##-- Validations -----------------
+    validates :package_id, presence: true
+    validates :user_id, presence: true
+    validates :refund_percent, presence: true
+
+    ##-- Callbacks -------------------
+    
+
+    ##-- Associations ----------------
+    has_many :packagings, dependent: :destroy
+    has_many :users, trough: :packagings
+
+    ##-- Methods----------------
+
+
 end

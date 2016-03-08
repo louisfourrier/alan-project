@@ -34,7 +34,7 @@ class User < ActiveRecord::Base
   validates :last_name, presence: true
 
   ##-- Callbacks -------------------
-  before_create :guess_company_domain
+  before_validation :guess_company_domain, if: :company_name_changed?
 
   ##-- Associations ----------------
 
@@ -52,7 +52,7 @@ class User < ActiveRecord::Base
 
   # Method that will guess the company domain from the company name.
   def guess_company_domain
-    if self.company_domain.nil?
+    if self.company_domain.blank?
       string = self.company_name.to_s.downcase.gsub(' ', '') + ".fr"
       self.company_domain = string
     end

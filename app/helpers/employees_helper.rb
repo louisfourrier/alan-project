@@ -12,6 +12,9 @@
 #  complete_information :boolean
 #  created_at           :datetime         not null
 #  updated_at           :datetime         not null
+#  research_name        :string
+#  email                :string
+#  access_token         :string
 #
 
 module EmployeesHelper
