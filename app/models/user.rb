@@ -31,9 +31,10 @@ class User < ActiveRecord::Base
 
   ##-- Validations -----------------
   validates :first_name, presence: true
-  validates :last_name, presence: true 
+  validates :last_name, presence: true
 
   ##-- Callbacks -------------------
+  before_create :guess_company_domain
 
   ##-- Associations ----------------
 

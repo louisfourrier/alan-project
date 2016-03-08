@@ -23,11 +23,12 @@ class EmployeesController < ApplicationController
 
   # GET /employees
   def index
-    @employees = @user.employees
+    @employees = @user.employees.search_and_paginate(params)
   end
 
   # GET /employees/1
   def show
+    
   end
 
   # GET /employees/new

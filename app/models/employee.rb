@@ -29,6 +29,38 @@ class Employee < ActiveRecord::Base
 
   ##-- Methods ----------------
 
+  # Method for searching and pagination through a collection of employee (must be in the model)
+  def self.search_and_paginate(params)
+    self.general_search(params).paginate(:page => params[:page], :per_page => 30)
+  end
+
+  # General search and ordering for the class
+  def self.general_search(attributes)
+    attributes.inject(self) do |scope, (key, value)|
+      #return scope.scoped if value.blank?
+      if value.blank?
+        scope.all
+      else
+          case key.to_sym
+          when :name
+           name = value.to_s.strip.downcase
+           scope.where('employees.first_name ILIKE ? OR employees.last_name ILIKE ? OR employees.email ILIKE ?',  "%#{name}%", "%#{name}%", "%#{name}%")
+
+          when :order # order=field-(ASC|DESC)
+            attribute, order = value.split("-")
+            if self.column_names.include? attribute.to_s
+              scope.order("#{self.table_name}.#{attribute} #{order}")
+            else
+              scope
+            end
+          else # unknown key (do nothing or raise error, as you prefer to)
+          scope.all
+          end
+
+      end
+    end
+  end
+
   def full_name
     first_name.to_s + ' ' + last_name.to_s
   end
@@ -36,10 +68,10 @@ class Employee < ActiveRecord::Base
   def guess_email
     company_domain = self.user.company_domain
     if company_domain
-      email = self.first_name.to_s.downcase + "." + self.last_name.to_s.downcase + "@" + company_domain.to_s 
+      email = self.first_name.to_s.downcase + "." + self.last_name.to_s.downcase + "@" + company_domain.to_s
       return email
     else
-      "Pas possible de deviner l'adresse mail"
+      "Impossible de deviner l'adresse mail, le domaine de l'entreprise n'est pas défini"
     end
   end
 

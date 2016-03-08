@@ -1,0 +1,30 @@
+<div class="forum-item active">
+  <div class="row">
+    <div class="col-md-9">
+      <div class="forum-icon">
+        <i class="fa fa-user"></i>
+      </div>
+      <%= link_to employee.full_name, user_employee_path(user, employee), class: "forum-item-title" %>
+
+      <div class="forum-sub-title">Assuré depuis le :
+        <%= l employee.subscription_date %></div>
+    </div>
+    <div class="col-md-1 forum-info">
+      <span class="views-number">
+        28
+      </span>
+      <div>
+        <small>ans</small>
+      </div>
+    </div>
+    <div class="col-md-2 forum-info">
+      <span class="views-number">
+        <i class="fa fa-check"></i>
+      </span>
+      <div>
+        <small>Dossier complet</small>
+      </div>
+    </div>
+
+  </div>
+</div>

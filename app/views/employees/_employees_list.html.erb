@@ -1,0 +1,35 @@
+<% if !employees.empty? %>
+
+<div class="text-center">
+	<%= will_paginate employees, renderer: BootstrapPagination::Rails  %>
+</div>
+
+<div class="ibox-content forum-container">
+
+  <%= render partial: "employees/employee", collection: employees, as: :employee, locals: {user: user} %>
+
+</div>
+
+<div class="text-center">
+	<%= will_paginate employees, renderer: BootstrapPagination::Rails  %>
+</div>
+
+<% else %>
+
+<div class="ibox-content ">
+
+  <div class="p-xs">
+
+    <h3>Vous n'avez pas encore assuré d'employé sur Alan. Rien de plus simple il vous suffit de nous donner son prénom et son nom et nous allons deviner son adresse mail et lui envoyer un mail afin qu'il complète son profil</h3>
+
+  </div>
+
+  <div class="text-center">
+    <%= link_to new_user_employee_path(user),class: "btn btn-primary text-uppercase" do %>
+    <i class="fa fa-user"></i>
+    Ajouter un nouvel Employé
+    <% end %>
+  </div>
+
+</div>
+<% end %>

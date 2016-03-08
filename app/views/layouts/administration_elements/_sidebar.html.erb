@@ -18,7 +18,7 @@
           AL
         </div>
       </li>
-      <li class="active">
+      <li class="active-link-container">
         <%= link_to current_user, class: "hidden-xs" do %>
         <div class="text-center padding-5">
           <i class="fa fa-th-large fa-2x"></i>
@@ -34,7 +34,7 @@
         <% end %>
       </li>
 
-      <li>
+      <li class="active-link-container">
         <%= link_to user_employees_path(current_user), class: "hidden-xs" do %>
         <div class="text-center padding-5">
           <i class="fa fa-users fa-2x"></i>
@@ -49,7 +49,7 @@
         <% end %>
       </li>
 
-      <li>
+      <li class="active-link-container">
 
         <%= link_to packages_path, class: "hidden-xs" do %>
         <div class="text-center padding-5">
@@ -67,7 +67,7 @@
 
       </li>
 
-      <li>
+      <li class="active-link-container">
 
         <%= link_to user_invoices_path(current_user), class: "hidden-xs" do %>
         <div class="text-center padding-5">
@@ -85,7 +85,7 @@
 
       </li>
 
-      <li>
+      <li class="active-link-container">
         <%= link_to legal_informations_path, class: "hidden-xs" do %>
         <div class="text-center padding-5">
           <i class="fa fa-globe fa-2x"></i>
@@ -101,7 +101,7 @@
         <% end %>
       </li>
 
-      <li>
+      <li class="active-link-container">
         <%= link_to edit_user_path(current_user), class: "hidden-xs" do %>
         <div class="text-center padding-5">
           <i class="fa fa-cogs fa-2x"></i>
@@ -125,5 +125,32 @@
 
   </div>
 </nav>
+
+
+<%= content_for(:end_script) do %>
+<script>
+$(function() {
+  var currentPage = location.pathname;
+  $('.active-link-container').each(function() {
+      var active = false;
+      $(this).find("a").each( function() {
+        var currentHref = $(this).attr('href');
+        //alert($(this).attr('href'));
+        if(currentHref == currentPage) {
+            active = true;
+        }
+      })
+      if (active == true){
+        $(this).addClass("active");
+      }
+    })
+});
+
+
+
+</script>
+
+
+<% end %>
 
 <!-- End of Sidebar -->
