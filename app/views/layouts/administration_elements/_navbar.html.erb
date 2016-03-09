@@ -12,9 +12,9 @@
 
 </div>
     <ul class="nav navbar-top-links navbar-right">
-        <li>
-            <span class="m-r-sm text-muted welcome-message">Bienvenue sur Alan Assurance.</span>
-        </li>
+        
+
+
 
 
         <li class="dropdown">
@@ -58,6 +58,12 @@
                     </div>
                 </li>
             </ul>
+        </li>
+
+        <li>
+              <%= link_to edit_user_path(current_user), class: "tooltip-tag", title: "Vos préférences" do %>
+                <i class="fa fa-cogs"></i>
+                <% end %>
         </li>
 
 
