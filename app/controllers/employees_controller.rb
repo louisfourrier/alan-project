@@ -69,12 +69,20 @@ class EmployeesController < ApplicationController
     redirect_to user_employees_path(current_user), notice: 'Employé supprimé de vos assurés'
   end
 
+  # New route to send a new email of inscription for the employee. Respond in JS
+  def send_new_inscription_email
+    @employee.send_complete_information_email
+    respond_to do |format|
+      format.js
+    end
+  end
+
   # Route for the complete profile function
   def complete_profile
     @user = User.find_by(id: params[:user_id])
     @employee = Employee.find_by(id: params[:id])
 
-    if @user & @employee
+    if (!@user.nil?) & (!@employee.nil?)
       if @employee.correct_access_token(params)
         @employee.has_completed_information
       else
@@ -83,6 +91,7 @@ class EmployeesController < ApplicationController
     else
       redirect_to root_path, notice: "Impossible d'accèder à la page"
     end
+    render :layout => 'application'
 
   end
 

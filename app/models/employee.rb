@@ -23,6 +23,8 @@ class Employee < ActiveRecord::Base
   ##-- Validations -----------------
   validates :first_name, presence: true
   validates :last_name, presence: true
+  validates :email, presence: true
+  validates :email, format: { :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i, message: "only allows letters" } # Validation of email format
   validates :user_id, presence: true
 
   ##-- Callbacks -------------------
@@ -30,6 +32,7 @@ class Employee < ActiveRecord::Base
   before_validation :update_research_name, if: :name_changed?
 
   after_create :generate_access_token
+  after_create :send_complete_information_email
 
 
   ##-- Associations ----------------
@@ -96,14 +99,23 @@ class Employee < ActiveRecord::Base
     end
   end
 
+  # Method that change the status of the employee
   def has_completed_information
     self.update(:complete_information => true)
   end
 
-  
+  def correct_access_token(params)
+    true
+  end
+
+  # Send the email to the employee to complete his profile
+  def send_complete_information_email
+    EmployeeMailer.complete_profile(self).deliver
+  end
 
   private
 
+  # Sanitize the email in the model.
   def sanitize_email
     if !self.email.blank?
       self.email = I18n.transliterate(self.email.to_s.downcase.strip.gsub(' ', '-'))
@@ -126,7 +138,6 @@ class Employee < ActiveRecord::Base
   def name_changed?
     first_name_changed? || last_name_changed?
   end
-
 
 
 end

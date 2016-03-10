@@ -2,6 +2,8 @@
 <nav class="navbar navbar-static-top" role="navigation" style="margin-bottom: 0">
 <div class="navbar-header">
 
+  <a class="navbar-minimalize minimalize-styl-2 btn btn-primary visible-xs" href="#"><i class="fa fa-bars"></i> </a>
+
   <%= form_tag({controller: "search", action: "result"}, method: "get", class: "navbar-form-custom") do %>
 
   <div class="form-group">
@@ -12,7 +14,7 @@
 
 </div>
     <ul class="nav navbar-top-links navbar-right">
-        
+
 
 
 
@@ -23,7 +25,7 @@
             </a>
             <ul class="dropdown-menu dropdown-alerts">
                 <li>
-                    <a href="mailbox.html">
+                    <a href="#">
                         <div>
                             <i class="fa fa-envelope fa-fw"></i> Vous avez un nouveau message de l'équipe ALAN
                             <span class="pull-right text-muted small">Il y a 2 jours</span>
@@ -32,7 +34,7 @@
                 </li>
                 <li class="divider"></li>
                 <li>
-                    <a href="profile.html">
+                    <a href="#">
                         <div>
                             <i class="fa fa-twitter fa-fw"></i> Alain dupont a rempli son dossier. Il est assuré
                             <span class="pull-right text-muted small">Il y a 12 jours</span>
@@ -41,7 +43,7 @@
                 </li>
                 <li class="divider"></li>
                 <li>
-                    <a href="grid_options.html">
+                    <a href="#">
                         <div>
                             <i class="fa fa-upload fa-fw"></i> Paiement assurance ALAN effectué le 12/03/2016
                             <span class="pull-right text-muted small">Il y a 20 jours</span>

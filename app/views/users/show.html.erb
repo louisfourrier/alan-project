@@ -68,8 +68,8 @@
         <div class="pull-left m-r-md">
           <i class="fa fa-bell text-navy mid-icon"></i>
         </div>
-        <h2>Notifications sur votre activité</h2>
-        <span>Les dernières alertes et notifications de votre compte Alan Assurance</span>
+        <h2>Notifications de votre compte</h2>
+        <span>Les dernières alertes et notifications de votre compte Alan Assurance.</span>
       </div>
     </div>
 
@@ -93,7 +93,9 @@
 
       <%= render partial: "notifications/notification", locals:{ title: "Création d'un nouvel employé : Alain Dupont", description: "Vous avez inscrit un nouvel employé (Alain Dupont). Un email lui a été envoyé afin qu'il complète son dossier", date: "15/03/2016", active: "", type: "fa-user" } %>
 
-
+      <div class="text-center padding-5">
+      <%=  link_to "Voir toutes les notifications", "#", class: "btn btn-primary text-center" %>
+      </div>
 
 
 
@@ -109,7 +111,7 @@
         <div class="pull-left m-r-md">
           <i class="fa fa-globe text-navy mid-icon"></i>
         </div>
-        <h2>Les dernières nouvelles sur la législation relative à l'assurance</h2>
+        <h2>Nouvelles du portail légal</h2>
         <span>Toutes les informations légales sur vos obligations en tant qu'employeur.</span>
       </div>
     </div>
@@ -132,7 +134,9 @@
 
       <%= render partial: "notifications/notification", locals:{ title: "Obligation d'assurer tous vos salariés", description: "La nouvelle loi prévoit.....", date: "26/08/2015", active: "", type: "fa-bomb" } %>
 
-
+      <div class="text-center padding-5">
+      <%=  link_to "Voir toutes les nouvelles", "#", class: "btn btn-primary text-center" %>
+      </div>
 
     </div>
   </div>

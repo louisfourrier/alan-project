@@ -76,4 +76,35 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+
+
+
+  config.action_mailer.default_url_options = { host: ENV['HOST'] }
+  routes.default_url_options[:host] = 'http://alan-project.herokuapp.com'
+
+  # Do not dump schema after migrations.
+  config.active_record.dump_schema_after_migration = false
+
+  ActionMailer::Base.smtp_settings = {
+  :address        => 'smtp.sendgrid.net',
+  :port           => '587',
+  :authentication => :plain,
+  :user_name      => ENV['SENDGRID_USERNAME'],
+  :password       => ENV['SENDGRID_PASSWORD'],
+  :domain         => ENV['HOST'],
+  :enable_starttls_auto => true
+  }
+
+  config.action_mailer.delivery_method = :smtp
+
+  config.middleware.use ExceptionNotification::Rack,
+  :email => {
+    :email_prefix => "Alan Production Exceptions Notifier",
+    :sender_address => %{"Errors Server" <errors@alan.fr>},
+    :exception_recipients => %w{louis.fourrier@gmail.com}
+  }
+
+
+
+
 end
